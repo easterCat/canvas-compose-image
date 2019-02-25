@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>compose</title>
+    <style>
+      .img-con {
+        height: 400px;
+        width: 400px;
+        border: 3px solid #8f8f8f;
+      }
+
+      .img-con img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .img-list img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="img-con">
+      <img class="img-create" src="./img/timg (1).jpg" alt="" />
+    </div>
+
+    <div class="img-list">
+      <div><img class="compose" src="./img/timg-(1)_01.png" alt="" /></div>
+      <div><img class="compose" src="./img/timg-(1)_02.png" alt="" /></div>
+      <div><img class="compose" src="./img/timg-(1)_03.png" alt="" /></div>
+      <div><img class="compose" src="./img/timg-(1)_04.png" alt="" /></div>
+    </div>
+
+    <div id="hello"></div>
+  </body>
+  <script type="text/javascript" src="./compose.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      let compose = document.querySelectorAll(".compose");
+      let src_arr = Array.from(compose).map(node => {
+        return node.src;
+      });
+
+      ComposeCanvas.compose(
+        [400, 400],
+        [
+          {
+            src: src_arr[0],
+            type: "image",
+            mode: "waiting",
+            pos: [0, 0, 200, 200]
+          },
+          {
+            src: src_arr[1],
+            type: "image",
+            mode: "waiting",
+            pos: [200, 0, 200, 200]
+          },
+          {
+            src: src_arr[2],
+            type: "image",
+            mode: "waiting",
+            pos: [0, 200, 200, 200]
+          },
+          {
+            src: src_arr[3],
+            type: "image",
+            mode: "waiting",
+            pos: [200, 200, 200, 200]
+          }
+        ],
+        function(img) {
+          console.log(img);
+          document.getElementById("hello").appendChild(img);
+        }
+      );
+    };
+  </script>
+</html>
