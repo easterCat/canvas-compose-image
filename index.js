@@ -1,10 +1,9 @@
 (function(win) {
   var ComposeCanvas,
-    layer,
+    layer = [],
     callback,
     imgList = [],
-    canvasWH = [200, 200],
-    layerQueue = [];
+    canvasWH = [200, 200];
   var canvas = document.createElement("canvas");
   var context = canvas.getContext("2d");
 
@@ -53,12 +52,16 @@
   }
 
   function _handleLayer(options) {
-    layer = Array.from(options) || [];
+    if (Object.prototype.toString.call(options) === "[object Array]") {
+      layer = options;
+    }
+
     var length = layer.length;
+
     for (var i = 0; i < length; i++) {
       if (layer[i]["type"] === "text") {
         layer[i]["mode"] = "complete";
-        _checkLayermode();
+        _checkLayerMode();
       }
 
       if (layer[i]["type"] === "image") {
@@ -79,20 +82,19 @@
   }
 
   function _loadedImg(index) {
-    console.log("加载完毕");
     //https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage
     layer[index]["mode"] = "complete";
     layer[index]["element"] = imgList[index];
-    _checkLayermode();
+    _checkLayerMode();
   }
 
-  function _errorImg(i) {
-    console.log("图片加载出错");
-    layer[i]["mode"] = "error";
-    _checkLayermode();
-  }
+  // function _errorImg(i) {
+  //   console.log("图片加载出错");
+  //   layer[i]["mode"] = "error";
+  //   _checkLayermode();
+  // }
 
-  function _checkLayermode() {
+  function _checkLayerMode() {
     var check = false;
     var current = 0;
     layer.forEach(function(item) {

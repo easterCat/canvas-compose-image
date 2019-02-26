@@ -39,9 +39,10 @@
   <script type="text/javascript" src="./index.js"></script>
   <script type="text/javascript">
     window.onload = function() {
-      let compose = document.querySelectorAll(".compose");
-      let src_arr = Array.from(compose).map(node => {
-        return node.src;
+      var compose = document.querySelectorAll(".compose");
+      var src_arr = [];
+      compose.forEach(node => {
+        src_arr.push(node.src);
       });
 
       ComposeCanvas.compose(
@@ -72,23 +73,33 @@
             pos: [200, 200, 200, 200]
           },
           {
-            text: "今天是个好日子",
+            text: "我是南帝",
             type: "text",
             mode: "waiting",
-            pos: [50, 200],
+            pos: [50, 100],
             style: {
               color: "#333",
-              font: "50px serif"
+              font: "30px serif"
             }
           },
           {
-            text: "今天是个好日子啊实打实大苏打多",
+            text: "我是北丐",
             type: "text",
             mode: "waiting",
-            pos: [0, 300],
+            pos: [0, 320],
             style: {
               color: "#333",
-              font: "50px serif"
+              font: "40px serif"
+            }
+          },
+          {
+            text: "中神通呢？",
+            type: "text",
+            mode: "waiting",
+            pos: [120, 220],
+            style: {
+              color: "#333",
+              font: "40px serif"
             }
           }
         ],
