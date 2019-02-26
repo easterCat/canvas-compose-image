@@ -1,6 +1,6 @@
 {
   "name": "canvas-compose-image",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "compose.js",
   "main": "index.js",
   "scripts": {
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/easterCat/canvas-compose-image/issues"
   },
-  "homepage": "https://github.com/easterCat/canvas-compose-image#readme"
+  "homepage": "https://github.com/easterCat/canvas-compose-image#readme",
+  "files": [
+    "img/",
+    "demo/",
+    "compose.md",
+    "server/"
+  ]
 }
